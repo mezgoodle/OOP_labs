@@ -2,7 +2,6 @@
 // Включаемый файл, созданный в Microsoft Visual C++.
 // Используется module2.rc
 //
-#define IDR_MENU1                       101
 
 // Next default values for new objects
 // 

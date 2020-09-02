@@ -66,7 +66,7 @@ CAPTION "Dialog"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     PUSHBUTTON      "Відміна",IDC_CANCEL_MOD1,50,63,102,35
-    PUSHBUTTON      "Далі",IDC_NEXT_MOD1,153,63,107,35
+    PUSHBUTTON      "Далі >",IDC_NEXT_MOD1,153,63,107,35
 END
 
 

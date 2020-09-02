@@ -13,6 +13,9 @@ BOOL CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         case IDC_CANCEL_MOD1:
             EndDialog(hDlg, LOWORD(wParam));
             return TRUE;
+        case IDC_NEXT_MOD1:
+            EndDialog(hDlg, LOWORD(wParam));
+            return TRUE;
         }
         break;
     }

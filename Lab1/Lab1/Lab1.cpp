@@ -5,6 +5,8 @@
 #include "framework.h"
 #include "Lab1.h"
 
+#include "module1.cpp";
+
 #define MAX_LOADSTRING 100
 
 // Глобальные переменные:
@@ -210,8 +212,7 @@ INT_PTR CALLBACK MyWorkBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
 
 void MyWork(HWND hWnd)
 {
-    //Що ми тут запрограмуємо, те й буде робитися
-    DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, MyWorkBox);
+   DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, MyWorkBox);
 }
 
 

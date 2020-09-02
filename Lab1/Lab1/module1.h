@@ -9,9 +9,9 @@
 #define IDC_NEXT_MOD1                   1003
 #define IDC_CANCEL_MOD1                 1004
 
-extern INT_PTR CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 // Next default values for new objects
-// 
+//
+extern BOOL CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        103

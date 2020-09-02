@@ -134,7 +134,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_WORK_MOD1:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, About);
+                DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work_MOD1);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

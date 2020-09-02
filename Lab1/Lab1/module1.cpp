@@ -1,6 +1,6 @@
+#include "pch.h"
 #include "framework.h"
 #include "module1.h"
-#include "pch.h"
 
 BOOL CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {

@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
+#include "module1.h"
 
 #define MAX_LOADSTRING 100
 
@@ -132,6 +133,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // Разобрать выбор в меню:
             switch (wmId)
             {
+            case IDM_WORK_MOD1:
+                DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, About);
+                break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;

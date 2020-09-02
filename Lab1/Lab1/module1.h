@@ -6,6 +6,7 @@
 #define IDD_DIALOG1                     101
 #define IDD_DIALOG2                     103
 #define IDD_WORK_MOD2                   103
+#define IDD_WORK_MOD3                   103
 #define IDC_BUTTON1                     1001
 #define IDC_CANCEL_MOD2                 1001
 #define IDC_BUTTON2                     1002
@@ -16,6 +17,7 @@
 
 // Next default values for new objects
 extern BOOL CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+extern BOOL CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        105

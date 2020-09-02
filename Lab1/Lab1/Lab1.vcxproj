@@ -151,6 +151,7 @@
     <ClInclude Include="Lab1.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="module1.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab1.rc" />
+    <ResourceCompile Include="module1.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Lab1.ico" />

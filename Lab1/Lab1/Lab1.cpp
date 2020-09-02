@@ -1,10 +1,9 @@
 ﻿// Lab1.cpp : Определяет точку входа для приложения.
 //
 
+#include "pch.h"
 #include "framework.h"
 #include "Lab1.h"
-
-#include "module1.cpp";
 
 #define MAX_LOADSTRING 100
 
@@ -18,7 +17,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    MyWork(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -139,9 +137,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
-                break;
-            case IDM_WORK1:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK3), hWnd, MyWork);
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);

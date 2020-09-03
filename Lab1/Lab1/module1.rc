@@ -59,16 +59,6 @@ BEGIN
     PUSHBUTTON      "Далі >",IDC_NEXT_MOD1,144,115,50,14
 END
 
-IDD_WORK_MOD2 DIALOGEX 0, 0, 309, 176
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Dialog"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
-BEGIN
-    DEFPUSHBUTTON   "Так",IDC_OK_MOD2,198,155,50,14
-    PUSHBUTTON      "Відміна",IDC_CANCEL_MOD2,252,155,50,14
-    PUSHBUTTON      "< Назад",IDC_BACK_MOD2,143,155,50,14
-END
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -85,14 +75,6 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 129
     END
-
-    IDD_WORK_MOD2, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 302
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 169
-    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -107,12 +89,63 @@ BEGIN
     0
 END
 
+#endif    // Русский (Россия) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Нейтральный (по умолчанию) (неизвестное значение дополнительного кода языка: 0x8) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ZZZ)
+LANGUAGE LANG_NEUTRAL, 0x8
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WORK_MOD2 DIALOGEX 0, 0, 310, 177
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "ОК",IDC_OK_MOD2,59,70,50,14
+    PUSHBUTTON      "Отмена",IDC_CANCEL_MOD2,137,79,50,14
+    PUSHBUTTON      "Button1",IDC_BACK_MOD2,222,64,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_WORK_MOD2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 303
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 170
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
 IDD_WORK_MOD2 AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
 
-#endif    // Русский (Россия) resources
+#endif    // Нейтральный (по умолчанию) (неизвестное значение дополнительного кода языка: 0x8) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

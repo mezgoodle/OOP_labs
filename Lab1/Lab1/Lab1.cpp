@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Lab1.h"
 #include "module1.h"
+#include "module2.h"
 
 #define MAX_LOADSTRING 100
 
@@ -134,6 +135,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case IDM_WORK_MOD1:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD1), hWnd, Work_MOD1);
+                break;
+            case IDM_WORK_MOD2:
+                DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD3), hWnd, Work_MOD3);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

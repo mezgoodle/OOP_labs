@@ -1,7 +1,28 @@
 #include "framework.h"
 #include "module2.h"
 
-BOOL CALLBACK Work_MOD3(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+TCHAR buf[1024] = { 0 };
+
+BOOL CALLBACK Work_MOD3(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
+	switch (iMessage)
+	{
+	case WM_INITDIALOG:
+		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"Hello");
+		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"World");
+		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"!");
+		return (INT_PTR)TRUE;
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK)
+		{
+			INT indx = SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_GETCURSEL, 0, 0);
+			SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_GETTEXT, indx, (long)buf);
+			EndDialog(hDlg, 1);
+			break;
+		}
+		if (LOWORD(wParam) == IDCANCEL) EndDialog(hDlg, 0);
+		break;
+	default: break;
+	}
 	return FALSE;
 }

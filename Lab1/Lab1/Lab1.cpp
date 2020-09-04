@@ -138,6 +138,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_WORK_MOD2:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD3), hWnd, Work_MOD3);
+                InvalidateRect(hWnd, 0, TRUE);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -154,8 +155,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
+            TextOut(hdc, 1, 1, buf, 1024);
             EndPaint(hWnd, &ps);
+            ZeroMemory(buf, 1024);
         }
         break;
     case WM_DESTROY:

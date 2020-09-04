@@ -3,7 +3,6 @@
 // Используется module1.rc
 //
 #define IDD_DIALOG1                     101
-#define IDD_WORK                        101
 #define IDD_WORK_MOD1                   101
 #define IDD_DIALOG2                     105
 #define IDD_WORK_MOD2                   108

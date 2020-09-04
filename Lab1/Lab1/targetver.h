@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-// // При включении SDKDDKVer.h будет задана самая новая из доступных платформ Windows.
-// Если вы планируете сборку приложения для предыдущей версии платформы Windows, включите WinSDKVer.h и
-// задайте желаемую платформу в макросе _WIN32_WINNT, прежде чем включать SDKDDKVer.h.
+// // When SDKDDKVer.h is enabled, the newest available Windows platform will be set.
+// If you are planning to build the application for a previous version of the Windows platform, include WinSDKVer.h and
+// set the desired platform in the _WIN32_WINNT macro before including SDKDDKVer.h.
 #include <SDKDDKVer.h>

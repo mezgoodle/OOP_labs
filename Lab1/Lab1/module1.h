@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Включаемый файл, созданный в Microsoft Visual C++.
-// Используется module1.rc
+// An include file created in Microsoft Visual C ++.
+// Used by module1.rc
 //
 #define IDD_DIALOG1                     101
 #define IDD_WORK_MOD1                   101

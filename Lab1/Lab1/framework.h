@@ -1,14 +1,14 @@
-﻿// header.h: включаемый файл для стандартных системных включаемых файлов
-// или включаемые файлы для конкретного проекта
+﻿// header.h: include file for standard system include files
+// or include files for a specific project
 //
 
 #pragma once
 
 #include "targetver.h"
-#define WIN32_LEAN_AND_MEAN             // Исключите редко используемые компоненты из заголовков Windows
-// Файлы заголовков Windows
+#define WIN32_LEAN_AND_MEAN             // Exclude infrequently used components from Windows headers
+// Windows header files
 #include <windows.h>
-// Файлы заголовков среды выполнения C
+// C Runtime Header Files
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>

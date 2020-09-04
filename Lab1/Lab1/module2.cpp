@@ -8,9 +8,9 @@ BOOL CALLBACK Work_MOD3(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	switch (iMessage)
 	{
 	case WM_INITDIALOG:
-		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"Hello");
-		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"World");
-		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"!");
+		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"IP-94");
+		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"IP-95");
+		SendDlgItemMessage(hDlg, IDC_LIST_MOD2, LB_ADDSTRING, 0, (LPARAM)"IP-96");
 		return (INT_PTR)TRUE;
 	case WM_COMMAND:
 		if (LOWORD(wParam) == IDOK)

@@ -38,6 +38,7 @@ BOOL CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
             return TRUE;
         case IDC_CANCEL_MOD2:   // Cancel button
             EndDialog(hDlg, LOWORD(wParam));
+            DefWindowProc(hDlg, message, wParam, lParam);
             return TRUE;
         case IDC_BACK_MOD2:     // Back button
             EndDialog(hDlg, LOWORD(wParam));

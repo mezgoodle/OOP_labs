@@ -15,8 +15,6 @@
 
 // Next default values for new objects
 // 
-extern BOOL CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
-extern BOOL CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS

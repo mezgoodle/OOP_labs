@@ -142,15 +142,19 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab1.h" />
-    <ClInclude Include="Resource.h" />
     <ClInclude Include="module1.h" />
     <ClInclude Include="module2.h" />
+    <ClInclude Include="module3.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab1.cpp" />
     <ClCompile Include="module1.cpp" />
     <ClCompile Include="module2.cpp" />
+    <ClCompile Include="module3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Lab1.rc" />

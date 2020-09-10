@@ -18,6 +18,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+void                paintOnWindow(HWND hWnd);   // Paint function
 
 // Main function
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -151,11 +152,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_PAINT:
         {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            TextOut(hdc, 1, 1, buf, 1024);   // Output the text in buf
-            EndPaint(hWnd, &ps);
-            ZeroMemory(buf, 1024);
+        paintOnWindow(hWnd);
         }
         break;
     case WM_DESTROY:
@@ -185,4 +182,12 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+void paintOnWindow(HWND hWnd) {
+    PAINTSTRUCT ps;
+    HDC hdc = BeginPaint(hWnd, &ps);
+    TextOut(hdc, 1, 1, buf, 1024);   // Output the text in buf
+    EndPaint(hWnd, &ps);
+    ZeroMemory(buf, 1024);
 }

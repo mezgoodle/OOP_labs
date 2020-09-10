@@ -136,8 +136,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 Func_MOD1(hInst, hWnd);
                 break;
             case IDM_WORK_MOD2: // Our second button
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD3), hWnd, Work_MOD3);
-                InvalidateRect(hWnd, 0, TRUE);
+                Func_MOD2(hInst, hWnd);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

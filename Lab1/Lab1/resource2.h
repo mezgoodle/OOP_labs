@@ -7,6 +7,7 @@
 #define IDD_WORK_MOD3                   150
 #define IDC_LIST1                       1001
 #define IDC_LIST_MOD2                   1001
+extern TCHAR buf[1024];
 
 // Next default values for new objects
 // 

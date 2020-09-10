@@ -4,7 +4,14 @@
 
 HINSTANCE hinst3;
 
-BOOL CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
+static BOOL CALLBACK Work_MOD3(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
+int Func_MOD3(HINSTANCE hInst, HWND hWnd)
+{
+    return DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD2), hWnd, Work_MOD3);
+}
+
+BOOL CALLBACK Work_MOD3(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
     UNREFERENCED_PARAMETER(lParam);
     switch (message)
     {
@@ -20,7 +27,8 @@ BOOL CALLBACK Work_MOD2(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
             return TRUE;
         case IDC_BACK_MOD2:     // Back button
             EndDialog(hDlg, LOWORD(wParam));
-            DialogBox(hinst3, MAKEINTRESOURCE(IDD_WORK_MOD1), hDlg, Work_MOD1);
+            Func_MOD1(hinst3, hDlg);
+            // DialogBox(hinst3, MAKEINTRESOURCE(IDD_WORK_MOD1), hDlg, Func_MOD1);
             return TRUE;
         }
         break;

@@ -3,6 +3,15 @@
 
 TCHAR buf[1024] = { 0 };
 
+static BOOL CALLBACK Work_MOD3(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
+int Func_MOD2(HINSTANCE hInst, HWND hWnd)
+{	
+	BOOL window = DialogBox(hInst, MAKEINTRESOURCE(IDD_WORK_MOD3), hWnd, Work_MOD3);
+	InvalidateRect(hWnd, 0, TRUE);
+	return window;
+}
+
 // First callback
 BOOL CALLBACK Work_MOD3(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {

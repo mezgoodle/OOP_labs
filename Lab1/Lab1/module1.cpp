@@ -27,7 +27,6 @@ BOOL CALLBACK Work_MOD1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
                 case IDC_NEXT_MOD1:
                     EndDialog(hDlg, LOWORD(wParam));
                     Func_MOD3(hinst1, hDlg);
-                    // DialogBox(hinst1, MAKEINTRESOURCE(IDD_WORK_MOD2), hDlg, Func_MOD3);
                     return TRUE;
             }
             break;

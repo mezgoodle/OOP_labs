@@ -38,7 +38,7 @@ BOOL CALLBACK Work_MOD3(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
         break;
     case WM_CLOSE:
         EndDialog(hDlg, 0);
-    break;
+        break;
     }
     return FALSE;
 }

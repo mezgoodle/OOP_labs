@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab2.h"
+#include "shape_editor.h"
 
 #define MAX_LOADSTRING 100
 

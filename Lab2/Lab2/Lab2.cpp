@@ -12,6 +12,7 @@
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+ShapeObjectsEditor Editor;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -125,14 +126,30 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    int wmId, wmEvent;
     switch (message)
     {
+    case WM_LBUTTONDOWN:
+        Editor.OnLBdown(hWnd);
+        break;
+    case WM_LBUTTONUP:
+        Editor.OnLBup(hWnd);
+        break;
+    case WM_MOUSEMOVE:
+        Editor.OnMouseMove(hWnd);
+        break;
+    case WM_INITMENUPOPUP:
+        Editor.OnInitMenuPopup(hWnd, wParam);
+        break;
     case WM_COMMAND:
         {
-            int wmId = LOWORD(wParam);
+            int wmId    = LOWORD(wParam);
+            int wmEvent = HIWORD(wParam);
             // Разобрать выбор в меню:
             switch (wmId)
             {
+            case IDM_POINT:
+
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
@@ -146,10 +163,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_PAINT:
         {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            EndPaint(hWnd, &ps);
+            Editor.OnPaint(hWnd);
+            //PAINTSTRUCT ps;
+            //HDC hdc = BeginPaint(hWnd, &ps);
+            //// TODO: Добавьте сюда любой код прорисовки, использующий HDC...
+            //EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:

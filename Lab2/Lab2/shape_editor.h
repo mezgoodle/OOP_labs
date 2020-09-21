@@ -1,5 +1,6 @@
 #pragma once
-class ShapeObjectsEditor {
+#include "editor.h";
+class ShapeObjectsEditor: public Editor {
 	private:
 
 	public:

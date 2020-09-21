@@ -3,8 +3,8 @@
 
 static int count = 0;
 static bool isPressed = false;
-int MY_SHAPE_ARRAY_SIZE = 106;
-Shape** pcshape = new Shape * [MY_SHAPE_ARRAY_SIZE];
+int MY_SHAPE_ARRAY_SIZE = 110;
+Shape *pcshape = new Shape * [MY_SHAPE_ARRAY_SIZE];
 
 // ShapeObjectEditor methods ---------------------------------------------------------------
 

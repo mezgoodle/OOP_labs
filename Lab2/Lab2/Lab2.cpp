@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Lab2.h"
+#include "shape_editor.h"
 
 #define MAX_LOADSTRING 100
 
@@ -17,6 +18,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+ShapeObjectsEditor Editor; //для варіанту статичного екземпляру редактора
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -124,14 +126,44 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    int wmId, wmEvent;
     switch (message)
     {
+    case WM_LBUTTONDOWN: //натиснуто ліву кнопку миші у клієнтській частині вікна
+        Editor.OnLBdown(hWnd);
+        break;
+    case WM_LBUTTONUP: //відпущено ліву кнопку миші у клієнтській частині вікна
+        Editor.OnLBup(hWnd);
+        break;
+    case WM_MOUSEMOVE: //пересунуто мишу у клієнтській частині вікна
+        Editor.OnMouseMove(hWnd);
+        break;
+    case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
+        Editor.OnPaint(hWnd);
+        break;
+    case WM_INITMENUPOPUP: //позначка пунктів меню - для окремих варіантів завдань
+        Editor.OnInitMenuPopup(hWnd, wParam);
+        break;
+
     case WM_COMMAND:
         {
-            int wmId = LOWORD(wParam);
+            wmId    = LOWORD(wParam);
+            wmEvent = HIWORD(wParam);
             // Разобрать выбор в меню:
             switch (wmId)
             {
+            case IDM_POINT:
+                Editor.StartPointEditor();
+                break;
+            case IDM_LINE:
+                Editor.StartLineEditor();
+                break;
+            case IDM_RECT:
+                Editor.StartRectEditor();
+                break;
+            case IDM_ELIPSE:
+                Editor.StartEllipseEditor();
+                break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;

@@ -1,5 +1,3 @@
-#pragma once
-#include "framework.h"
 class Editor
 {
 public: //а, можливо, ще потрібен віртуальний деструктор?
@@ -7,4 +5,4 @@ public: //а, можливо, ще потрібен віртуальний деструктор?
 	virtual void OnLBup(HWND) = 0;
 	virtual void OnMouseMove(HWND) = 0;
 	virtual void OnPaint(HWND) = 0;
-};
+}; 

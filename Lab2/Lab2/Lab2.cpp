@@ -1,24 +1,25 @@
 ﻿// Lab2.cpp : Определяет точку входа для приложения.
 //
 
-#include "pch.h"
 #include "framework.h"
 #include "Lab2.h"
 #include "shape_editor.h"
+#include "resource.h"
 
 #define MAX_LOADSTRING 100
 
 // Глобальные переменные:
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
-WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
+
+ShapeObjectsEditor figure;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-ShapeObjectsEditor Editor; //для варіанту статичного екземпляру редактора
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -126,43 +127,37 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    int wmId, wmEvent;
     switch (message)
     {
     case WM_LBUTTONDOWN: //натиснуто ліву кнопку миші у клієнтській частині вікна
-        Editor.OnLBdown(hWnd);
+        figure.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP: //відпущено ліву кнопку миші у клієнтській частині вікна
-        Editor.OnLBup(hWnd);
+        figure.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE: //пересунуто мишу у клієнтській частині вікна
-        Editor.OnMouseMove(hWnd);
+        figure.OnMouseMove(hWnd);
         break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
-        Editor.OnPaint(hWnd);
+        figure.OnPaint(hWnd);
         break;
-    case WM_INITMENUPOPUP: //позначка пунктів меню - для окремих варіантів завдань
-        Editor.OnInitMenuPopup(hWnd, wParam);
-        break;
-
     case WM_COMMAND:
         {
-            wmId    = LOWORD(wParam);
-            wmEvent = HIWORD(wParam);
+            int wmId = LOWORD(wParam);
             // Разобрать выбор в меню:
             switch (wmId)
             {
             case IDM_POINT:
-                Editor.StartPointEditor();
+                figure.StartPointEditor(); //початок вводу точкових об’єктів
                 break;
             case IDM_LINE:
-                Editor.StartLineEditor();
+                figure.StartLineEditor(); //початок вводу об’єктів-ліній
                 break;
             case IDM_RECT:
-                Editor.StartRectEditor();
+                figure.StartRectEditor(); //початок вводу прямокутників
                 break;
-            case IDM_ELIPSE:
-                Editor.StartEllipseEditor();
+            case IDM_ELLIPSE:
+                figure.StartEllipseEditor(); //початок вводу еліпсів
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -173,14 +168,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
-        }
-        break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:

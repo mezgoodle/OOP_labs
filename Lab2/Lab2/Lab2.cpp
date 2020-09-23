@@ -13,7 +13,7 @@ HINSTANCE hInst;                                // текущий экземпл
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
 
-ShapeObjectsEditor figure;
+ShapeObjectsEditor editorShape;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -130,16 +130,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_LBUTTONDOWN: //натиснуто ліву кнопку миші у клієнтській частині вікна
-        figure.OnLBdown(hWnd);
+        editorShape.OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP: //відпущено ліву кнопку миші у клієнтській частині вікна
-        figure.OnLBup(hWnd);
+        editorShape.OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE: //пересунуто мишу у клієнтській частині вікна
-        figure.OnMouseMove(hWnd);
+        editorShape.OnMouseMove(hWnd);
+        break;
+    case WM_INITMENUPOPUP:
+        editorShape.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
-        figure.OnPaint(hWnd);
+        editorShape.OnPaint(hWnd);
         break;
     case WM_COMMAND:
         {
@@ -148,16 +151,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_POINT:
-                figure.StartPointEditor(); //початок вводу точкових об’єктів
+                editorShape.StartPointEditor(); //початок вводу точкових об’єктів
                 break;
             case IDM_LINE:
-                figure.StartLineEditor(); //початок вводу об’єктів-ліній
+                editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
                 break;
             case IDM_RECT:
-                figure.StartRectEditor(); //початок вводу прямокутників
+                editorShape.StartRectEditor(); //початок вводу прямокутників
                 break;
             case IDM_ELLIPSE:
-                figure.StartEllipseEditor(); //початок вводу еліпсів
+                editorShape.StartEllipseEditor(); //початок вводу еліпсів
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

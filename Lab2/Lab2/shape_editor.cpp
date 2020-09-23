@@ -61,6 +61,11 @@ void ShapeObjectsEditor::OnPaint(HWND hWnd) {
 	draw->OnPaint(hWnd);
 }
 
+void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
+	if (pse)
+		pse->OnInitMenuPopup(hWnd, wParams);
+}
+
 // ---------------------------------- Функции ShapeEditor -----------------------------------------
 // Функции, которые отвечают за рисование фигур:
 void ShapeEditor::OnLBdown(HWND hWnd)
@@ -85,6 +90,8 @@ void ShapeEditor::OnLBup(HWND hWnd)
 
 void ShapeEditor::OnMouseMove(HWND hWnd) {}
 
+void ShapeEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {};
+
 void ShapeEditor::OnPaint(HWND hWnd) {
 	PAINTSTRUCT ps;
 	HDC hdc;
@@ -108,6 +115,20 @@ void PointEditor::OnLBup(HWND hWnd) {
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
 }
+
+void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
+	HMENU hMenu, hSubMenu;
+
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu) {
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+	}
+}
+
 
 // Линия:
 
@@ -144,6 +165,20 @@ void LineEditor::OnMouseMove(HWND hWnd) {
 	ReleaseDC(hWnd, hdc);
 }
 
+void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
+	HMENU hMenu, hSubMenu;
+
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu) {
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+	}
+}
+
+
 // Прямоугольник: 
 
 
@@ -178,6 +213,19 @@ void RectEditor::OnMouseMove(HWND hWnd) {
 	ReleaseDC(hWnd, hdc);
 }
 
+void RectEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
+	HMENU hMenu, hSubMenu;
+
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu) {
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECT, MF_CHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
+	}
+}
+
 // Эллипс:
 
 void EllipseEditor::OnLBdown(HWND hWnd) {
@@ -210,5 +258,18 @@ void EllipseEditor::OnMouseMove(HWND hWnd) {
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 	ReleaseDC(hWnd, hdc);
+}
+
+void EllipseEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
+	HMENU hMenu, hSubMenu;
+
+	hMenu = GetMenu(hWnd);
+	hSubMenu = GetSubMenu(hMenu, 1);
+	if ((HMENU)wParams == hSubMenu) {
+		CheckMenuItem(hSubMenu, IDM_POINT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_LINE, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_RECT, MF_UNCHECKED);
+		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
+	}
 }
 

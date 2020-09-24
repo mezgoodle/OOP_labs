@@ -148,7 +148,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="editor.cpp" />
     <ClCompile Include="Lab2.cpp" />
     <ClCompile Include="shape.cpp" />
     <ClCompile Include="shape_editor.cpp" />

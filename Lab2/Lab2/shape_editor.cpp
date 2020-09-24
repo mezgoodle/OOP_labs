@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "shape_editor.h"
 
-const int MY_SHAPE_ARRAY_SIZE = 107;
+const int MY_SHAPE_ARRAY_SIZE = 110;
 Shape* pcshape[MY_SHAPE_ARRAY_SIZE];
 int size = 0;
 bool pressed;

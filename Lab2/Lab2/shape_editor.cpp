@@ -66,8 +66,7 @@ void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 		pse->OnInitMenuPopup(hWnd, wParams);
 }
 
-// ---------------------------------- Функции ShapeEditor -----------------------------------------
-// Функции, которые отвечают за рисование фигур:
+// ---------------------------------- ShapeEditor Functions
 void ShapeEditor::OnLBdown(HWND hWnd)
 {
 	pressed = true;
@@ -102,7 +101,7 @@ void ShapeEditor::OnPaint(HWND hWnd) {
 	EndPaint(hWnd, &ps);
 }
 
-// Точка: 
+// Point: 
 void PointEditor::OnLBdown(HWND hWnd) {
 	__super::OnLBdown(hWnd);
 }
@@ -129,8 +128,7 @@ void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	}
 }
 
-
-// Линия:
+// Line:
 
 void LineEditor::OnLBdown(HWND hWnd) {
 	__super::OnLBdown(hWnd);
@@ -178,9 +176,7 @@ void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	}
 }
 
-
-// Прямоугольник: 
-
+// Rect: 
 
 void RectEditor::OnLBdown(HWND hWnd) {
 	__super::OnLBdown(hWnd);
@@ -226,7 +222,7 @@ void RectEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	}
 }
 
-// Эллипс:
+// Ellipse:
 
 void EllipseEditor::OnLBdown(HWND hWnd) {
 	__super::OnLBdown(hWnd);
@@ -272,4 +268,3 @@ void EllipseEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_CHECKED);
 	}
 }
-

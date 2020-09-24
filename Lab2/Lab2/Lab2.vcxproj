@@ -140,9 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="editor.h" />
-    <ClInclude Include="figures_classes.h" />
+    <ClInclude Include="ellipse.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab2.h" />
+    <ClInclude Include="line.h" />
+    <ClInclude Include="point.h" />
+    <ClInclude Include="rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="shape.h" />
     <ClInclude Include="shape_editor.h" />

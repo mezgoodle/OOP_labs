@@ -1,6 +1,9 @@
 #include "framework.h"
 #include "shape_editor.h"
-
+#include "point.h"
+#include "line.h"
+#include "rect.h"
+#include "ellipse.h"
 
 const int MY_SHAPE_ARRAY_SIZE = 107;
 Shape* pcshape[MY_SHAPE_ARRAY_SIZE];

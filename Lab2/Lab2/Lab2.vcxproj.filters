@@ -36,7 +36,16 @@
     <ClInclude Include="shape.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="figures_classes.h">
+    <ClInclude Include="point.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="line.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="rect.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ellipse.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

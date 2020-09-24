@@ -7,7 +7,7 @@ public:
 	virtual void Show(HDC) = 0;
 };
 
-class PointShape :  public Shape
+class PointShape : public Shape
 {
 public:
 	void Show(HDC);

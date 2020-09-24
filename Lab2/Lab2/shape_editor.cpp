@@ -1,9 +1,5 @@
 #include "framework.h"
 #include "shape_editor.h"
-#include "point.h"
-#include "line.h"
-#include "rect.h"
-#include "ellipse.h"
 
 const int MY_SHAPE_ARRAY_SIZE = 107;
 Shape* pcshape[MY_SHAPE_ARRAY_SIZE];
@@ -111,7 +107,7 @@ void PointEditor::OnLBdown(HWND hWnd) {
 
 void PointEditor::OnLBup(HWND hWnd) {
 	__super::OnLBup(hWnd);
-	PointShape *Point = new PointShape;
+	PointShape* Point = new PointShape;
 	Point->Set(x1, y1, x2, y2);
 	pcshape[size] = Point;
 	size++;
@@ -130,6 +126,7 @@ void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 		CheckMenuItem(hSubMenu, IDM_ELLIPSE, MF_UNCHECKED);
 	}
 }
+
 
 // Line:
 

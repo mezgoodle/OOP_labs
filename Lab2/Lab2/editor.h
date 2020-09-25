@@ -1,4 +1,4 @@
-class Editor
+class Editor // Main class
 {
 public:
 	virtual void OnLBdown(HWND) = 0;

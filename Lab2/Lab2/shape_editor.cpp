@@ -1,24 +1,25 @@
 #include "framework.h"
 #include "shape_editor.h"
 
+// Variables
 const int MY_SHAPE_ARRAY_SIZE = 110;
 Shape* pcshape[MY_SHAPE_ARRAY_SIZE];
 int size = 0;
 bool pressed;
 
-// Вспомогательные функции:
-
+// Constructor
 ShapeObjectsEditor::ShapeObjectsEditor()
 {
 	pse = new PointEditor;
 }
 
+// Destructor
 ShapeObjectsEditor::~ShapeObjectsEditor()
 {
 	for (int i = 0; i < size; i++) delete pcshape[i];
 }
 
-
+// ShapeObjectsEditor functions
 void ShapeObjectsEditor::StartPointEditor()
 {
 	if (pse) delete pse;
@@ -65,9 +66,8 @@ void ShapeObjectsEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 		pse->OnInitMenuPopup(hWnd, wParams);
 }
 
-// ---------------------------------- ShapeEditor Functions
-void ShapeEditor::OnLBdown(HWND hWnd)
-{
+// ShapeEditor Functions
+void ShapeEditor::OnLBdown(HWND hWnd) {
 	pressed = true;
 	POINT pt;
 	GetCursorPos(&pt);
@@ -76,8 +76,7 @@ void ShapeEditor::OnLBdown(HWND hWnd)
 	y1 = y2 = pt.y;
 }
 
-void ShapeEditor::OnLBup(HWND hWnd)
-{
+void ShapeEditor::OnLBup(HWND hWnd) {
 	POINT pt;
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
@@ -100,13 +99,13 @@ void ShapeEditor::OnPaint(HWND hWnd) {
 	EndPaint(hWnd, &ps);
 }
 
-// Point: 
+// Point:
 void PointEditor::OnLBdown(HWND hWnd) {
-	__super::OnLBdown(hWnd);
+	__super::OnLBdown(hWnd); // Calling a base-class implementation
 }
 
 void PointEditor::OnLBup(HWND hWnd) {
-	__super::OnLBup(hWnd);
+	__super::OnLBup(hWnd); // Calling a base-class implementation
 	PointShape* Point = new PointShape;
 	Point->Set(x1, y1, x2, y2);
 	pcshape[size] = Point;
@@ -116,7 +115,6 @@ void PointEditor::OnLBup(HWND hWnd) {
 
 void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	HMENU hMenu, hSubMenu;
-
 	hMenu = GetMenu(hWnd);
 	hSubMenu = GetSubMenu(hMenu, 1);
 	if ((HMENU)wParams == hSubMenu) {
@@ -127,15 +125,13 @@ void PointEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	}
 }
 
-
 // Line:
-
 void LineEditor::OnLBdown(HWND hWnd) {
-	__super::OnLBdown(hWnd);
+	__super::OnLBdown(hWnd); // Calling a base-class implementation
 }
 
 void LineEditor::OnLBup(HWND hWnd) {
-	__super::OnLBup(hWnd);
+	__super::OnLBup(hWnd); // Calling a base-class implementation
 	LineShape* Line = new LineShape;
 	Line->Set(x1, y1, x2, y2);
 	pcshape[size] = Line;
@@ -165,7 +161,6 @@ void LineEditor::OnMouseMove(HWND hWnd) {
 
 void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	HMENU hMenu, hSubMenu;
-
 	hMenu = GetMenu(hWnd);
 	hSubMenu = GetSubMenu(hMenu, 1);
 	if ((HMENU)wParams == hSubMenu) {
@@ -177,13 +172,12 @@ void LineEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 }
 
 // Rect: 
-
 void RectEditor::OnLBdown(HWND hWnd) {
-	__super::OnLBdown(hWnd);
+	__super::OnLBdown(hWnd); // Calling a base-class implementation
 }
 
 void RectEditor::OnLBup(HWND hWnd) {
-	__super::OnLBup(hWnd);
+	__super::OnLBup(hWnd); // Calling a base-class implementation
 	RectShape* Rect = new RectShape;
 	Rect->Set(x1, y1, x2, y2);
 	pcshape[size] = Rect;
@@ -211,7 +205,6 @@ void RectEditor::OnMouseMove(HWND hWnd) {
 
 void RectEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	HMENU hMenu, hSubMenu;
-
 	hMenu = GetMenu(hWnd);
 	hSubMenu = GetSubMenu(hMenu, 1);
 	if ((HMENU)wParams == hSubMenu) {
@@ -223,9 +216,8 @@ void RectEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 }
 
 // Ellipse:
-
 void EllipseEditor::OnLBdown(HWND hWnd) {
-	__super::OnLBdown(hWnd);
+	__super::OnLBdown(hWnd); // Calling a base-class implementation
 }
 
 
@@ -258,7 +250,6 @@ void EllipseEditor::OnMouseMove(HWND hWnd) {
 
 void EllipseEditor::OnInitMenuPopup(HWND hWnd, WPARAM wParams) {
 	HMENU hMenu, hSubMenu;
-
 	hMenu = GetMenu(hWnd);
 	hSubMenu = GetSubMenu(hMenu, 1);
 	if ((HMENU)wParams == hSubMenu) {

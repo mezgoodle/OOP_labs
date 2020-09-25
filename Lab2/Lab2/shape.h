@@ -1,4 +1,4 @@
-class Shape
+class Shape // Shape class for figures
 {
 protected:
 	long xs1, ys1, xs2, ys2;

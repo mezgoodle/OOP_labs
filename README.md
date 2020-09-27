@@ -22,7 +22,9 @@ There are main files, that used in every lab
 
 
 ## Labs list
+
 * [First lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab1)
+* [Second lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab2)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

@@ -1,10 +1,11 @@
-﻿// Lab3.cpp : Определяет точку входа для приложения.
+﻿// Lab2.cpp : Определяет точку входа для приложения.
 //
 
 #include "framework.h"
-#include "Lab3.h"
+#include "Lab2.h"
 #include "resource.h"
 #include "shape_editor.h" // import shape_editor class
+#include "toolbar.h"
 
 #define MAX_LOADSTRING 100
 
@@ -22,9 +23,9 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-    _In_opt_ HINSTANCE hPrevInstance,
-    _In_ LPWSTR    lpCmdLine,
-    _In_ int       nCmdShow)
+                     _In_opt_ HINSTANCE hPrevInstance,
+                     _In_ LPWSTR    lpCmdLine,
+                     _In_ int       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
@@ -33,16 +34,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // Инициализация глобальных строк
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_LAB3, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_LAB2, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
-    if (!InitInstance(hInstance, nCmdShow))
+    if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAB3));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAB2));
 
     MSG msg;
 
@@ -56,7 +57,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
-    return (int)msg.wParam;
+    return (int) msg.wParam;
 }
 
 
@@ -72,17 +73,17 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc = WndProc;
-    wcex.cbClsExtra = 0;
-    wcex.cbWndExtra = 0;
-    wcex.hInstance = hInstance;
-    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_LAB3));
-    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-    wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_LAB3);
-    wcex.lpszClassName = szWindowClass;
-    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.style          = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc    = WndProc;
+    wcex.cbClsExtra     = 0;
+    wcex.cbWndExtra     = 0;
+    wcex.hInstance      = hInstance;
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_LAB2));
+    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
+    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_LAB2);
+    wcex.lpszClassName  = szWindowClass;
+    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
 }
@@ -99,20 +100,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-    hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
+   hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
 
-    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-    if (!hWnd)
-    {
-        return FALSE;
-    }
+   if (!hWnd)
+   {
+      return FALSE;
+   }
 
-    ShowWindow(hWnd, nCmdShow);
-    UpdateWindow(hWnd);
+   ShowWindow(hWnd, nCmdShow);
+   UpdateWindow(hWnd);
 
-    return TRUE;
+   return TRUE;
 }
 
 //
@@ -141,43 +142,58 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_INITMENUPOPUP:
         editorShape.OnInitMenuPopup(hWnd, wParam);
         break;
+    case WM_CREATE:
+        OnCreate(hWnd);
+        break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
         editorShape.OnPaint(hWnd);
         break;
     case WM_COMMAND:
-    {
-        int wmId = LOWORD(wParam);
-        // Разобрать выбор в меню:
-        switch (wmId)
         {
-        case IDM_POINT:
-            editorShape.StartPointEditor(); //початок вводу точкових об’єктів
-            break;
-        case IDM_LINE:
-            editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
-            break;
-        case IDM_RECT:
-            editorShape.StartRectEditor(); //початок вводу прямокутників
-            break;
-        case IDM_ELLIPSE:
-            editorShape.StartEllipseEditor(); //початок вводу еліпсів
-            break;
-        case IDM_ABOUT:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-            break;
-        case IDM_EXIT:
-            DestroyWindow(hWnd);
-            break;
-        default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
+            int wmId = LOWORD(wParam);
+            // Разобрать выбор в меню:
+            switch (wmId)
+            {
+            case ID_TOOL_POINT:
+                
+            case IDM_POINT:
+                editorShape.StartPointEditor(); //початок вводу точкових об’єктів
+                SetWindowTextA(hWnd, "Крапка");
+                break;
+            case ID_TOOL_LINE:
+
+            case IDM_LINE:
+                editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
+                SetWindowTextA(hWnd, "Лінія");
+                break;
+            case ID_TOOL_RECTANGLE:
+
+            case IDM_RECT:
+                editorShape.StartRectEditor(); //початок вводу прямокутників
+                SetWindowTextA(hWnd, "Рект");
+                break;
+            case ID_TOOL_ELLIPSE:
+
+            case IDM_ELLIPSE:
+                editorShape.StartEllipseEditor(); //початок вводу еліпсів
+                SetWindowTextA(hWnd, "Еліпсе");
+                break;
+            case IDM_ABOUT:
+                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+                break;
+            case IDM_EXIT:
+                DestroyWindow(hWnd);
+                break;
+            default:
+                return DefWindowProcW(hWnd, message, wParam, lParam);
+            }
         }
-    }
-    break;
+        break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
     default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        return DefWindowProcW(hWnd, message, wParam, lParam);
     }
     return 0;
 }

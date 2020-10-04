@@ -18,7 +18,7 @@ public:
 class ShapeObjectsEditor // Shape editor class for figure objects
 {
 private:
-	ShapeEditor* pse;
+	ShapeEditor *pse;
 public:
 	ShapeObjectsEditor(void);
 	~ShapeObjectsEditor();
@@ -67,3 +67,4 @@ public:
 	void OnMouseMove(HWND);
 	void OnInitMenuPopup(HWND, WPARAM);
 };
+

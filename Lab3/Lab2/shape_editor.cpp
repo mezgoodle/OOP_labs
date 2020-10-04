@@ -57,7 +57,7 @@ void ShapeObjectsEditor::OnMouseMove(HWND hWnd) {
 }
 
 void ShapeObjectsEditor::OnPaint(HWND hWnd) {
-	ShapeEditor* draw = new ShapeEditor;
+	ShapeEditor *draw = new ShapeEditor;
 	draw->OnPaint(hWnd);
 }
 

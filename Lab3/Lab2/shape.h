@@ -1,4 +1,3 @@
-#pragma once
 class Shape // Shape class for figures
 {
 protected:

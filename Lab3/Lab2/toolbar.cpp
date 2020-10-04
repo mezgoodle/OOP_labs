@@ -4,6 +4,8 @@
 
 HWND hwndToolBar = NULL;
 extern HINSTANCE hInst;
+bool point, line, rect, ellipse = 0;
+int whatPressed = NULL;
 
 void OnCreate(HWND hWnd)
 {
@@ -20,7 +22,7 @@ void OnCreate(HWND hWnd)
     tbb[2].iBitmap = 2; //індекс зображення у BITMAP
     tbb[2].fsState = TBSTATE_ENABLED;
     tbb[2].fsStyle = TBSTYLE_BUTTON;
-    tbb[2].idCommand = ID_TOOL_RECTANGLE;
+    tbb[2].idCommand = ID_TOOL_RECT;
     tbb[3].iBitmap = 3;
     tbb[3].fsState = TBSTATE_ENABLED;
     tbb[3].fsStyle = TBSTYLE_BUTTON;
@@ -39,4 +41,75 @@ void OnCreate(HWND hWnd)
         5, //кількість кнопок (разом з роздільником)
         24, 24, 24, 24, //розміри кнопок та зображень BITMAP
         sizeof(TBBUTTON));
+}
+
+void OnSize(HWND hWnd) {
+	RECT rc, rw;
+
+	if (hwndToolBar) {
+		GetClientRect(hWnd, &rc);
+		GetWindowRect(hwndToolBar, &rw);
+		MoveWindow(hwndToolBar, 0, 0, rc.right - rc.left, rw.bottom - rw.top, FALSE);
+	}
+}
+
+static void offPressed(int id) {
+	SendMessage(hwndToolBar, TB_PRESSBUTTON, whatPressed, 0);
+
+	whatPressed = id;
+}
+
+void OnPointPressed() {
+	point = !point;
+	line = rect = ellipse = 0;
+	offPressed(ID_TOOL_POINT);
+	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
+}
+
+void OnLinePressed() {
+	line = !line;
+	point = rect = ellipse = 0;
+	offPressed(ID_TOOL_LINE);
+	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
+}
+
+void OnRectPressed() {
+	rect = !rect;
+	point = line = ellipse = 0;
+	offPressed(ID_TOOL_RECT);
+	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_RECT, rect);
+}
+
+void OnEllipsePressed() {
+	ellipse = !ellipse;
+	point = line = rect = 0;
+	offPressed(ID_TOOL_ELLIPSE);
+	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
+}
+
+void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
+{
+    LPNMHDR pnmh = (LPNMHDR)lParam;
+    LPCSTR pText;
+    if (pnmh->code == TTN_NEEDTEXT)
+    {
+        LPTOOLTIPTEXT lpttt = (LPTOOLTIPTEXT)lParam;
+        switch (lpttt->hdr.idFrom)
+        {
+        case ID_TOOL_POINT:
+            pText = "Крапка";
+            break;
+        case ID_TOOL_LINE:
+            pText = "Лінія";
+            break;
+        case ID_TOOL_RECT:
+            pText = "Прямокутник";
+            break;
+        case ID_TOOL_ELLIPSE:
+            pText = "Еліпс";
+            break;
+        default: pText = "Щось невідоме";
+        }
+        lstrcpy(lpttt->szText, pText);
+    }
 }

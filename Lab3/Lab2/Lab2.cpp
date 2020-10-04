@@ -166,17 +166,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
                 SetWindowTextA(hWnd, "Лінія");
                 break;
-            case ID_TOOL_RECTANGLE:
+            case ID_TOOL_RECT:
 
             case IDM_RECT:
                 editorShape.StartRectEditor(); //початок вводу прямокутників
-                SetWindowTextA(hWnd, "Рект");
+                SetWindowTextA(hWnd, "Прямокутник");
                 break;
             case ID_TOOL_ELLIPSE:
 
             case IDM_ELLIPSE:
                 editorShape.StartEllipseEditor(); //початок вводу еліпсів
-                SetWindowTextA(hWnd, "Еліпсе");
+                SetWindowTextA(hWnd, "Еліпс");
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

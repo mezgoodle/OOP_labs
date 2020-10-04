@@ -87,7 +87,7 @@ void OnEllipsePressed() {
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
 }
 
-void OnNotify(HWND hWnd, WPARAM wParam, LPARAM lParam)
+void OnNotify(HWND hWnd, LPARAM lParam)
 {
     LPNMHDR pnmh = (LPNMHDR)lParam;
     LPCSTR pText;

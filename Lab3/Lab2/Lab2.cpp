@@ -145,6 +145,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         OnCreate(hWnd);
         break;
+    case WM_SIZE:
+        OnSize(hWnd);
+        break;
+    case WM_NOTIFY:
+        OnNotify(hWnd, lParam);
+        break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
         editorShape.OnPaint(hWnd);
         break;

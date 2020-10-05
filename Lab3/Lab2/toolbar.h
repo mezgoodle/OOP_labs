@@ -5,10 +5,15 @@
 #define ID_TOOL_ELLIPSE                 32809
 #define IDC_MY_TOOLBAR                  32811
 
-void OnCreate(HWND hWnd);
-void OnSize(HWND);
-void OnPointPressed();
-void OnLinePressed();
-void OnRectPressed();
-void OnEllipsePressed();
-void OnNotify(HWND, LPARAM);
+class Toolbar {
+public:
+	void OnCreate(HWND hWnd);
+	void OnSize(HWND);
+	void OnPointPressed();
+	void OnLinePressed();
+	void OnRectPressed();
+	void OnEllipsePressed();
+	void OnNotify(HWND, LPARAM);
+	void offPressed(int);
+};
+

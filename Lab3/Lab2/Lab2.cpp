@@ -15,6 +15,7 @@ WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки за�
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
 
 ShapeObjectsEditor editorShape;
+Toolbar tool;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -143,13 +144,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         editorShape.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_CREATE:
-        OnCreate(hWnd);
+        tool.OnCreate(hWnd);
         break;
     case WM_SIZE:
-        OnSize(hWnd);
+        tool.OnSize(hWnd);
         break;
     case WM_NOTIFY:
-        OnNotify(hWnd, lParam);
+        tool.OnNotify(hWnd, lParam);
         break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
         editorShape.OnPaint(hWnd);
@@ -162,25 +163,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case ID_TOOL_POINT:
             case IDM_POINT:
-                OnPointPressed();
+                tool.OnPointPressed();
                 editorShape.StartPointEditor(); //початок вводу точкових об’єктів
                 SetWindowTextA(hWnd, "Крапка");
                 break;
             case ID_TOOL_LINE:
             case IDM_LINE:
-                OnLinePressed();
+                tool.OnLinePressed();
                 editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
                 SetWindowTextA(hWnd, "Лінія");
                 break;
             case ID_TOOL_RECT:
             case IDM_RECT:
-                OnRectPressed();
+                tool.OnRectPressed();
                 editorShape.StartRectEditor(); //початок вводу прямокутників
                 SetWindowTextA(hWnd, "Прямокутник");
                 break;
             case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
-                OnEllipsePressed();
+                tool.OnEllipsePressed();
                 editorShape.StartEllipseEditor(); //початок вводу еліпсів
                 SetWindowTextA(hWnd, "Еліпс");
                 break;

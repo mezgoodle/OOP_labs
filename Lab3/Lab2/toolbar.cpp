@@ -7,7 +7,7 @@ extern HINSTANCE hInst;
 bool point, line, rect, ellipse = 0;
 int whatPressed = NULL;
 
-void OnCreate(HWND hWnd)
+void Toolbar::OnCreate(HWND hWnd)
 {
     TBBUTTON tbb[5];
     ZeroMemory(tbb, sizeof(tbb));
@@ -43,7 +43,7 @@ void OnCreate(HWND hWnd)
         sizeof(TBBUTTON));
 }
 
-void OnSize(HWND hWnd) {
+void Toolbar::OnSize(HWND hWnd) {
 	RECT rc, rw;
 
 	if (hwndToolBar) {
@@ -53,41 +53,41 @@ void OnSize(HWND hWnd) {
 	}
 }
 
-static void offPressed(int id) {
+void Toolbar::offPressed(int id) {
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, whatPressed, 0);
 
 	whatPressed = id;
 }
 
-void OnPointPressed() {
+void Toolbar::OnPointPressed() {
 	point = !point;
 	line = rect = ellipse = 0;
 	offPressed(ID_TOOL_POINT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
 }
 
-void OnLinePressed() {
+void Toolbar::OnLinePressed() {
 	line = !line;
 	point = rect = ellipse = 0;
 	offPressed(ID_TOOL_LINE);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
 }
 
-void OnRectPressed() {
+void Toolbar::OnRectPressed() {
 	rect = !rect;
 	point = line = ellipse = 0;
 	offPressed(ID_TOOL_RECT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_RECT, rect);
 }
 
-void OnEllipsePressed() {
+void Toolbar::OnEllipsePressed() {
 	ellipse = !ellipse;
 	point = line = rect = 0;
 	offPressed(ID_TOOL_ELLIPSE);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
 }
 
-void OnNotify(HWND hWnd, LPARAM lParam)
+void Toolbar::OnNotify(HWND hWnd, LPARAM lParam)
 {
     LPNMHDR pnmh = (LPNMHDR)lParam;
     LPCSTR pText;

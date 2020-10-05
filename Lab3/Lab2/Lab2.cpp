@@ -14,8 +14,8 @@ HINSTANCE hInst;                                // текущий экземпл
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
 
-ShapeObjectsEditor editorShape;
-Toolbar tool;
+ShapeObjectsEditor editorShape;                 // Create editor shape object
+Toolbar tool;                                   // Create toolbar object
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -60,8 +60,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     return (int) msg.wParam;
 }
-
-
 
 //
 //  ФУНКЦИЯ: MyRegisterClass()
@@ -144,13 +142,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         editorShape.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_CREATE:
-        tool.OnCreate(hWnd);
+        tool.OnCreate(hWnd);         // Create toolbar
         break;
     case WM_SIZE:
-        tool.OnSize(hWnd);
+        tool.OnSize(hWnd);           // Size of toolbar
         break;
     case WM_NOTIFY:
-        tool.OnNotify(hWnd, lParam);
+        tool.OnNotify(hWnd, lParam); // Notify pressed button
         break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
         editorShape.OnPaint(hWnd);

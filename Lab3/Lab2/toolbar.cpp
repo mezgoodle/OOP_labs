@@ -2,11 +2,13 @@
 #include "resource1.h"
 #include "toolbar.h"
 
+// Required variables
 HWND hwndToolBar = NULL;
 extern HINSTANCE hInst;
 bool point, line, rect, ellipse = 0;
 int whatPressed = NULL;
 
+// Create toolbar listener
 void Toolbar::OnCreate(HWND hWnd)
 {
     TBBUTTON tbb[5];
@@ -43,6 +45,7 @@ void Toolbar::OnCreate(HWND hWnd)
         sizeof(TBBUTTON));
 }
 
+// Change toolbar listener
 void Toolbar::OnSize(HWND hWnd) {
 	RECT rc, rw;
 
@@ -53,40 +56,46 @@ void Toolbar::OnSize(HWND hWnd) {
 	}
 }
 
-void Toolbar::offPressed(int id) {
+// Unpress toolbar button
+void Toolbar::OffPressed(int id) {
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, whatPressed, 0);
 
 	whatPressed = id;
 }
 
+// Pressed toolbar point button
 void Toolbar::OnPointPressed() {
 	point = !point;
 	line = rect = ellipse = 0;
-	offPressed(ID_TOOL_POINT);
+	OffPressed(ID_TOOL_POINT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
 }
 
+// Pressed toolbar line button
 void Toolbar::OnLinePressed() {
 	line = !line;
 	point = rect = ellipse = 0;
-	offPressed(ID_TOOL_LINE);
+	OffPressed(ID_TOOL_LINE);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
 }
 
+// Pressed toolbar rectangle button
 void Toolbar::OnRectPressed() {
 	rect = !rect;
 	point = line = ellipse = 0;
-	offPressed(ID_TOOL_RECT);
+	OffPressed(ID_TOOL_RECT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_RECT, rect);
 }
 
+// Pressed toolbar ellipse button
 void Toolbar::OnEllipsePressed() {
 	ellipse = !ellipse;
 	point = line = rect = 0;
-	offPressed(ID_TOOL_ELLIPSE);
+	OffPressed(ID_TOOL_ELLIPSE);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
 }
 
+// Notify current pressed button
 void Toolbar::OnNotify(HWND hWnd, LPARAM lParam)
 {
     LPNMHDR pnmh = (LPNMHDR)lParam;

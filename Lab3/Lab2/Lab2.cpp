@@ -161,26 +161,26 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case ID_TOOL_POINT:
-                OnPointPressed();
             case IDM_POINT:
+                OnPointPressed();
                 editorShape.StartPointEditor(); //початок вводу точкових об’єктів
                 SetWindowTextA(hWnd, "Крапка");
                 break;
             case ID_TOOL_LINE:
-                OnLinePressed();
             case IDM_LINE:
+                OnLinePressed();
                 editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
                 SetWindowTextA(hWnd, "Лінія");
                 break;
             case ID_TOOL_RECT:
-                OnRectPressed();
             case IDM_RECT:
+                OnRectPressed();
                 editorShape.StartRectEditor(); //початок вводу прямокутників
                 SetWindowTextA(hWnd, "Прямокутник");
                 break;
             case ID_TOOL_ELLIPSE:
-                OnEllipsePressed();
             case IDM_ELLIPSE:
+                OnEllipsePressed();
                 editorShape.StartEllipseEditor(); //початок вводу еліпсів
                 SetWindowTextA(hWnd, "Еліпс");
                 break;

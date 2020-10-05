@@ -16,4 +16,3 @@ public:
 	void OnNotify(HWND, LPARAM);
 	void offPressed(int);
 };
-

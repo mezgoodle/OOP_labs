@@ -16,11 +16,11 @@
 #define ID_32772                        32772
 #define ID_32773                        32773
 #define ID_32774                        32774
-#define IDM_POINT                       32775
-#define ID_LINE                         32776
-#define IDM_LINE                        32777
-#define IDM_RECT                        32778
-#define IDM_ELLIPSE                     32779
+#define IDM_POINT                       32805
+#define ID_LINE                         32806
+#define IDM_LINE                        32806
+#define IDM_RECT                        32807
+#define IDM_ELLIPSE                     32809
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

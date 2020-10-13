@@ -159,29 +159,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // Разобрать выбор в меню:
             switch (wmId)
             {
-            case ID_TOOL_POINT:
             case IDM_POINT:
                 tool.OnPointPressed();
-                editorShape.StartPointEditor(); //початок вводу точкових об’єктів
-                SetWindowTextA(hWnd, "Крапка");
+                editorShape.StartPointEditor(hWnd); //початок вводу точкових об’єктів
                 break;
-            case ID_TOOL_LINE:
             case IDM_LINE:
                 tool.OnLinePressed();
-                editorShape.StartLineEditor(); //початок вводу об’єктів-ліній
-                SetWindowTextA(hWnd, "Лінія");
+                editorShape.StartLineEditor(hWnd); //початок вводу об’єктів-ліній
                 break;
-            case ID_TOOL_RECT:
             case IDM_RECT:
                 tool.OnRectPressed();
-                editorShape.StartRectEditor(); //початок вводу прямокутників
-                SetWindowTextA(hWnd, "Прямокутник");
+                editorShape.StartRectEditor(hWnd); //початок вводу прямокутників
                 break;
-            case ID_TOOL_ELLIPSE:
             case IDM_ELLIPSE:
                 tool.OnEllipsePressed();
-                editorShape.StartEllipseEditor(); //початок вводу еліпсів
-                SetWindowTextA(hWnd, "Еліпс");
+                editorShape.StartEllipseEditor(hWnd); //початок вводу еліпсів
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

@@ -20,28 +20,32 @@ ShapeObjectsEditor::~ShapeObjectsEditor()
 }
 
 // ShapeObjectsEditor functions
-void ShapeObjectsEditor::StartPointEditor()
+void ShapeObjectsEditor::StartPointEditor(HWND hWnd)
 {
 	if (pse) delete pse;
 	pse = new PointEditor;
+	SetWindowTextA(hWnd, "Крапка");
 }
 
-void ShapeObjectsEditor::StartLineEditor()
+void ShapeObjectsEditor::StartLineEditor(HWND hWnd)
 {
 	if (pse) delete pse;
 	pse = new LineEditor;
+	SetWindowTextA(hWnd, "Лінія");
 }
 
-void ShapeObjectsEditor::StartRectEditor()
+void ShapeObjectsEditor::StartRectEditor(HWND hWnd)
 {
 	if (pse) delete pse;
 	pse = new RectEditor;
+	SetWindowTextA(hWnd, "Прямокутник");
 }
 
-void ShapeObjectsEditor::StartEllipseEditor()
+void ShapeObjectsEditor::StartEllipseEditor(HWND hWnd)
 {
 	if (pse) delete pse;
 	pse = new EllipseEditor;
+	SetWindowTextA(hWnd, "Еліпс");
 }
 
 void ShapeObjectsEditor::OnLBdown(HWND hWnd) {

@@ -139,14 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="editor.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lab2.h" />
     <ClInclude Include="myeditor.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="shape.h" />
-    <ClInclude Include="shape_editor.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="toolbar.h" />
   </ItemGroup>
@@ -154,7 +152,6 @@
     <ClCompile Include="Lab2.cpp" />
     <ClCompile Include="myeditor.cpp" />
     <ClCompile Include="shape.cpp" />
-    <ClCompile Include="shape_editor.cpp" />
     <ClCompile Include="toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>

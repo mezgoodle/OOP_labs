@@ -4,8 +4,8 @@
 #include "framework.h"
 #include "Lab2.h"
 #include "resource.h"
-#include "shape_editor.h" // import shape_editor class
 #include "toolbar.h"
+#include "myeditor.h"
 
 #define MAX_LOADSTRING 100
 
@@ -14,7 +14,7 @@ HINSTANCE hInst;                                // текущий экземпл
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окн
 
-ShapeObjectsEditor editorShape;                 // Create editor shape object
+MyEditor* editorShape = MyEditor::getInstance();// Create editor shape object
 Toolbar tool;                                   // Create toolbar object
 
 // Отправить объявления функций, включенных в этот модуль кода:
@@ -130,16 +130,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
     case WM_LBUTTONDOWN: //натиснуто ліву кнопку миші у клієнтській частині вікна
-        editorShape.OnLBdown(hWnd);
+        if (editorShape) editorShape->OnLBdown(hWnd);
         break;
     case WM_LBUTTONUP: //відпущено ліву кнопку миші у клієнтській частині вікна
-        editorShape.OnLBup(hWnd);
+        if (editorShape) editorShape->OnLBup(hWnd);
         break;
     case WM_MOUSEMOVE: //пересунуто мишу у клієнтській частині вікна
-        editorShape.OnMouseMove(hWnd);
+        if (editorShape) editorShape->OnMouseMove(hWnd);
         break;
     case WM_INITMENUPOPUP:
-        editorShape.OnInitMenuPopup(hWnd, wParam);
+        //editorShape.OnInitMenuPopup(hWnd, wParam);
         break;
     case WM_CREATE:
         tool.OnCreate(hWnd);         // Create toolbar
@@ -151,7 +151,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         tool.OnNotify(hWnd, lParam); // Notify pressed button
         break;
     case WM_PAINT: //потрібно оновлення зображення клієнтської частині вікна
-        editorShape.OnPaint(hWnd);
+        if (editorShape) editorShape->OnPaint(hWnd);
         break;
     case WM_COMMAND:
         {
@@ -161,19 +161,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case IDM_POINT:
                 tool.OnPointPressed();
-                editorShape.StartPointEditor(hWnd); //початок вводу точкових об’єктів
+                if (editorShape) editorShape->Start(new PointShape);
                 break;
             case IDM_LINE:
                 tool.OnLinePressed();
-                editorShape.StartLineEditor(hWnd); //початок вводу об’єктів-ліній
+                if (editorShape) editorShape->Start(new LineShape);
                 break;
             case IDM_RECT:
                 tool.OnRectPressed();
-                editorShape.StartRectEditor(hWnd); //початок вводу прямокутників
+                if (editorShape) editorShape->Start(new RectShape);
                 break;
             case IDM_ELLIPSE:
                 tool.OnEllipsePressed();
-                editorShape.StartEllipseEditor(hWnd); //початок вводу еліпсів
+                if (editorShape) editorShape->Start(new EllipseShape);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

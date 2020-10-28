@@ -179,7 +179,7 @@ void RectEditor::OnLBdown(HWND hWnd) {
 void RectEditor::OnLBup(HWND hWnd) {
 	__super::OnLBup(hWnd); // Calling a base-class implementation
 	RectShape* Rect = new RectShape;
-	Rect->Set(x1, y1, x2, y2);
+	Rect->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	pcshape[size] = Rect;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
@@ -192,12 +192,12 @@ void RectEditor::OnMouseMove(HWND hWnd) {
 	SetROP2(hdc, R2_NOTXORPEN);
 	hPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Rectangle(hdc, x1, y1, x2, y2);
+	Rectangle(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
-	Rectangle(hdc, x1, y1, x2, y2);
+	Rectangle(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 	ReleaseDC(hWnd, hdc);
@@ -224,7 +224,7 @@ void EllipseEditor::OnLBdown(HWND hWnd) {
 void EllipseEditor::OnLBup(HWND hWnd) {
 	__super::OnLBup(hWnd);
 	EllipseShape* Ellipse = new EllipseShape;
-	Ellipse->Set(2 * x1 - x2, 2 * y1 - y2, x2, y2);
+	Ellipse->Set(x1, y1, x2, y2);
 	pcshape[size] = Ellipse;
 	size++;
 	InvalidateRect(hWnd, NULL, TRUE);
@@ -237,12 +237,12 @@ void EllipseEditor::OnMouseMove(HWND hWnd) {
 	SetROP2(hdc, R2_NOTXORPEN);
 	hPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Arc(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2, 0, 0, 0, 0);
+	Arc(hdc, x1, y1, x2, y2, 0, 0, 0, 0);
 	GetCursorPos(&pt);
 	ScreenToClient(hWnd, &pt);
 	x2 = pt.x;
 	y2 = pt.y;
-	Arc(hdc, 2 * x1 - x2, 2 * y1 - y2, x2, y2, 0, 0, 0, 0);
+	Arc(hdc, x1, y1, x2, y2, 0, 0, 0, 0);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 	ReleaseDC(hWnd, hdc);

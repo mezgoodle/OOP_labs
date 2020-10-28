@@ -19,15 +19,7 @@ void PointShape::Show(HDC hdc) {
 Shape* PointShape::Copy() {
 	return new PointShape();
 }
-Shape* LineShape::Copy() {
-	return new LineShape();
-}
-Shape* RectShape::Copy() {
-	return new RectShape();
-}
-Shape* EllipseShape::Copy() {
-	return new EllipseShape();
-}
+
 void LineShape::Show(HDC hdc) {
 	HPEN hPen, hPenOld;
 	hPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0)); // Create pen
@@ -40,6 +32,9 @@ void LineShape::Show(HDC hdc) {
 	DeleteObject(hPen);
 }
 
+Shape* LineShape::Copy() {
+	return new LineShape();
+}
 
 void RectShape::Show(HDC hdc) {
 	HPEN hPen, hPenOld;
@@ -56,6 +51,10 @@ void RectShape::Show(HDC hdc) {
 	DeleteObject(hBrush);
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
+}
+
+Shape* RectShape::Copy() {
+	return new RectShape();
 }
 
 void EllipseShape::Show(HDC hdc) {
@@ -77,7 +76,9 @@ void EllipseShape::Show(HDC hdc) {
 };
 
 
-
+Shape* EllipseShape::Copy() {
+	return new EllipseShape();
+}
 
 void PointLineShape::Show(HDC hdc) {
 	long x1, x2, y1, y2;

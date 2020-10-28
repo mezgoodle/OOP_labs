@@ -11,7 +11,7 @@ int whatPressed = NULL;
 // Create toolbar listener
 void Toolbar::OnCreate(HWND hWnd)
 {
-    TBBUTTON tbb[5];
+    TBBUTTON tbb[7];
     ZeroMemory(tbb, sizeof(tbb));
     tbb[0].iBitmap = 0;
     tbb[0].fsState = TBSTATE_ENABLED;
@@ -31,16 +31,24 @@ void Toolbar::OnCreate(HWND hWnd)
     tbb[3].idCommand = ID_TOOL_ELLIPSE;
     tbb[4].iBitmap = 4;
     tbb[4].fsState = TBSTATE_ENABLED;
-    tbb[4].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
-    tbb[4].idCommand = 4;
+    tbb[4].fsStyle = TBSTYLE_BUTTON;
+    tbb[4].idCommand = ID_TOOL_ELLIPSE;
+    tbb[5].iBitmap = 5;
+    tbb[5].fsState = TBSTATE_ENABLED;
+    tbb[5].fsStyle = TBSTYLE_BUTTON;
+    tbb[5].idCommand = ID_TOOL_ELLIPSE;
+    tbb[6].iBitmap = 4;
+    tbb[6].fsState = TBSTATE_ENABLED;
+    tbb[6].fsStyle = TBSTYLE_SEP; //роздільник груп кнопок
+    tbb[6].idCommand = 4;
     hwndToolBar = CreateToolbarEx(hWnd,
         WS_CHILD | WS_VISIBLE | WS_BORDER | WS_CLIPSIBLINGS | CCS_TOP | TBSTYLE_TOOLTIPS,
         IDC_MY_TOOLBAR,
-        4, //кількість зображень у BITMAP
+        6, //кількість зображень у BITMAP
         hInst,
         IDB_BITMAP1, //ID ресурсу BITMAP
         tbb,
-        5, //кількість кнопок (разом з роздільником)
+        7, //кількість кнопок (разом з роздільником)
         24, 24, 24, 24, //розміри кнопок та зображень BITMAP
         sizeof(TBBUTTON));
 }

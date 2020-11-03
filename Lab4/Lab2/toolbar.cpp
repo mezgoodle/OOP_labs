@@ -61,42 +61,48 @@ void Toolbar::OnSize(HWND hWnd) {
 	}
 }
 
-void Toolbar::OnPointPressed() {
+void Toolbar::OnPointPressed(HWND hWnd) {
+	SetWindowTextA(hWnd, "Крапка");
 	point = 1;
 	line = rect = ellipse = pointline = cube = 0;
 	OffPressed(ID_TOOL_POINT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_POINT, point);
 }
 
-void Toolbar::OnLinePressed() {
+void Toolbar::OnLinePressed(HWND hWnd) {
+	SetWindowTextA(hWnd, "Лінія");
 	line = 1;
 	point = rect = ellipse = pointline = cube = 0;
 	OffPressed(ID_TOOL_LINE);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE, line);
 }
 
-void Toolbar::OnRectPressed() {
+void Toolbar::OnRectPressed(HWND hWnd) {
+	SetWindowTextA(hWnd, "Прямокутник");
 	rect = 1;
 	point = line = ellipse = pointline = cube = 0;
 	OffPressed(ID_TOOL_RECT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_RECT, rect);
 }
 
-void Toolbar::OnEllipsePressed() {
+void Toolbar::OnEllipsePressed(HWND hWnd) {
+	SetWindowTextA(hWnd, "Еліпс");
 	ellipse = 1;
 	point = line = rect = pointline = cube = 0;
 	OffPressed(ID_TOOL_ELLIPSE);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_ELLIPSE, ellipse);
 }
 
-void Toolbar::OnPointLinePressed() {
+void Toolbar::OnPointLinePressed(HWND hWnd) {
+	SetWindowTextA(hWnd, "Лінія з точками");
 	pointline = 1;
 	point = line = rect = ellipse = cube = 0;
 	OffPressed(ID_TOOL_LINE_POINT);
 	SendMessage(hwndToolBar, TB_PRESSBUTTON, ID_TOOL_LINE_POINT, pointline);
 }
 
-void Toolbar::OnCubePressed() {
+void Toolbar::OnCubePressed(HWND hWnd) {
+	SetWindowTextA(hWnd, "Куб");
 	cube = 1;
 	point = line = rect = ellipse = pointline = 0;
 	OffPressed(ID_TOOL_CUBE);

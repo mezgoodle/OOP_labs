@@ -12,12 +12,12 @@ class Toolbar {
 public:
 	void OnCreate(HWND hWnd);
 	void OnSize(HWND);
-	void OnPointPressed();
-	void OnLinePressed();
-	void OnRectPressed();
-	void OnCubePressed();
-	void OnEllipsePressed();
-	void OnPointLinePressed();
+	void OnPointPressed(HWND hWnd);
+	void OnLinePressed(HWND hWnd);
+	void OnRectPressed(HWND hWnd);
+	void OnCubePressed(HWND hWnd);
+	void OnEllipsePressed(HWND hWnd);
+	void OnPointLinePressed(HWND hWnd);
 	void OnNotify(HWND, LPARAM);
 	void OffPressed(int);
 };

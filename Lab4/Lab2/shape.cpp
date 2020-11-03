@@ -84,6 +84,9 @@ void PointLineShape::Show(HDC hdc) {
 	long x1, x2, y1, y2;
 	x1 = xs1; y1 = ys1; x2 = xs2; y2 = ys2;
 
+	LineShape::Set(x1, y1, x2, y2);
+	LineShape::Show(hdc);
+
 	EllipseShape::Set(x1 + 10, y1 + 10, x1 - 10, y1 - 10);
 	EllipseShape::Show(hdc);
 
@@ -91,8 +94,6 @@ void PointLineShape::Show(HDC hdc) {
 	EllipseShape::Show(hdc);
 
 	LineShape::Set(x1, y1, x2, y2);
-	LineShape::Show(hdc);
-
 }
 
 Shape* PointLineShape::Copy() {

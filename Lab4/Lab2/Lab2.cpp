@@ -160,27 +160,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_POINT:
-                tool.OnPointPressed();
+                tool.OnPointPressed(hWnd);
                 if (editorShape) editorShape->Start(new PointShape);
                 break;
             case IDM_LINE:
-                tool.OnLinePressed();
+                tool.OnLinePressed(hWnd);
                 if (editorShape) editorShape->Start(new LineShape);
                 break;
             case IDM_RECT:
-                tool.OnRectPressed();
+                tool.OnRectPressed(hWnd);
                 if (editorShape) editorShape->Start(new RectShape);
                 break;
             case IDM_ELLIPSE:
-                tool.OnEllipsePressed();
+                tool.OnEllipsePressed(hWnd);
                 if (editorShape) editorShape->Start(new EllipseShape);
                 break;
             case IDM_CUBE:
-                tool.OnCubePressed();
+                tool.OnCubePressed(hWnd);
                 if (editorShape) editorShape->Start(new CubeShape);
                 break;
             case IDM_POINT_LINE:
-                tool.OnPointLinePressed();
+                tool.OnPointLinePressed(hWnd);
                 if (editorShape) editorShape->Start(new PointLineShape);
                 break;
             case IDM_ABOUT:

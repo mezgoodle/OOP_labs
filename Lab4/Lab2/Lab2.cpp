@@ -175,6 +175,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 tool.OnEllipsePressed();
                 if (editorShape) editorShape->Start(new EllipseShape);
                 break;
+            case IDM_CUBE:
+                tool.OnCubePressed();
+                if (editorShape) editorShape->Start(new CubeShape);
+                break;
+            case IDM_POINT_LINE:
+                tool.OnPointLinePressed();
+                if (editorShape) editorShape->Start(new PointLineShape);
+                break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;

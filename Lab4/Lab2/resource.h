@@ -18,8 +18,8 @@
 #define ID_32774                        32774
 #define ID_32780                        32780
 #define ID_32781                        32781
-#define IDM_CUBE                        32782
-#define IDM_POINT_LINE                  32783
+#define IDM_CUBE                        32813
+#define IDM_POINT_LINE                  32855
 #define IDM_POINT                       32805
 #define ID_LINE                         32806
 #define IDM_LINE                        32806

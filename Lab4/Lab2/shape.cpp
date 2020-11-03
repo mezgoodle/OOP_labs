@@ -39,13 +39,13 @@ Shape* LineShape::Copy() {
 void RectShape::Show(HDC hdc) {
 	HPEN hPen, hPenOld;
 	HBRUSH hBrush, hBrushOld;
-	hPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));	// Create pen
+	hPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));					// Create pen
 	hPenOld = (HPEN)SelectObject(hdc, hPen);
 	hBrush = CreateSolidBrush(RGB(192, 192, 192));
 	hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
 	SelectObject(hdc, hBrush);
 
-	Rectangle(hdc, xs1, ys1, xs2, ys2);				// Create rectangle
+	Rectangle(hdc, 2 * xs1 - xs2, 2 * ys1 - ys2, xs2, ys2);				// Create rectangle
 
 	SelectObject(hdc, hBrushOld);
 	DeleteObject(hBrush);
@@ -104,11 +104,21 @@ void CubeShape::Show(HDC hdc) {
 	long x1, x2, y1, y2;
 	x1 = xs1; y1 = ys1; x2 = xs2; y2 = ys2;
 
-	RectShape::Set(x1 - 75, y1 - 75, x1 + 75, y1 + 75);
-	RectShape::Show(hdc);
+	HPEN hPen, hPenOld;
+	HBRUSH hBrush, hBrushOld;
+	hPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));					// Create pen
+	hPenOld = (HPEN)SelectObject(hdc, hPen);
+	hBrush = CreateSolidBrush(RGB(192, 192, 192));
+	hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
+	SelectObject(hdc, hBrush);
 
-	RectShape::Set(x2 - 75, y2 - 75, x2 + 75, y2 + 75);
-	RectShape::Show(hdc);
+	Rectangle(hdc, x1 - 75, y1 - 75, x1 + 75, y1 + 75);		
+	Rectangle(hdc, x2 - 75, y2 - 75, x2 + 75, y2 + 75);		// Create rectangle
+
+	SelectObject(hdc, hBrushOld);
+	DeleteObject(hBrush);
+	SelectObject(hdc, hPenOld);
+	DeleteObject(hPen);
 
 	LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
 	LineShape::Show(hdc);

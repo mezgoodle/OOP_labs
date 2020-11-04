@@ -53,7 +53,7 @@ void MyEditor::OnMouseMove(HWND hWnd) {
 
 		MoveToEx(hdc, x1, y1, NULL);
 		pcshape[c]->Set(x1, y1, x2, y2);
-		pcshape[c]->Show(hdc);
+		pcshape[c]->WayTrack(hdc);
 
 		GetCursorPos(&pt);
 		ScreenToClient(hWnd, &pt);
@@ -63,7 +63,7 @@ void MyEditor::OnMouseMove(HWND hWnd) {
 
 		MoveToEx(hdc, x1, y1, NULL);
 		pcshape[c]->Set(x1, y1, x2, y2);
-		pcshape[c]->Show(hdc);
+		pcshape[c]->WayTrack(hdc);
 
 		ReleaseDC(hWnd, hdc);
 	}

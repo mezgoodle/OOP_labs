@@ -143,6 +143,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CREATE:
         tool.OnCreate(hWnd);         // Create toolbar
+        if (editorShape) editorShape->Start(new EmptyShape);
         break;
     case WM_SIZE:
         tool.OnSize(hWnd);           // Size of toolbar

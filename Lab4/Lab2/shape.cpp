@@ -210,3 +210,11 @@ void CubeShape::WayTrack(HDC hdc) {
 Shape* CubeShape::Copy() {
 	return new CubeShape();
 }
+
+void EmptyShape::Show(HDC hdc) {}
+
+void EmptyShape::WayTrack(HDC hdc) {}
+
+Shape* EmptyShape::Copy() {
+	return new EmptyShape();
+}

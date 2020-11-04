@@ -53,3 +53,9 @@ public:
 	void WayTrack(HDC);
 	virtual Shape* Copy();
 };
+
+class EmptyShape : public Shape {
+	virtual void Show(HDC);
+	virtual Shape* Copy();
+	virtual void WayTrack(HDC);
+};

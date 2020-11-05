@@ -168,17 +168,45 @@ void CubeShape::Show(HDC hdc) {
 	SelectObject(hdc, hPenOld);
 	DeleteObject(hPen);
 
-	LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
-	LineShape::Show(hdc);
+	if (x2 > x1 && y2 < y1)
+	{
+		LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
+		LineShape::Show(hdc);
+	}
 
-	LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
-	LineShape::Show(hdc);
+	if (x2 > x1 && y2 > y1)
+	{
+		LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
+		LineShape::Show(hdc);
+	}
 
-	LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
-	LineShape::Show(hdc);
+	if (x2 < x1 && y2 > y1)
+	{
+		LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
+		LineShape::Show(hdc);
+	}
 
-	LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
-	LineShape::Show(hdc);
+	if (x2 < x1 && y2 < y1)
+	{
+		LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
+		LineShape::Show(hdc);
+		LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
+		LineShape::Show(hdc);
+	}
 
 	LineShape::Set(x1, y1, x2, y2);
 }

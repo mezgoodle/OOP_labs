@@ -129,19 +129,20 @@ void PointLineShape::Show(HDC hdc) {
 
 void PointLineShape::WayTrack(HDC hdc) {
 	long x1, x2, y1, y2;
-	x1 = xs1;
-	y1 = ys1;
-	x2 = xs2;
-	y2 = ys2;
-	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	MoveToEx(hdc, x1, y1, NULL);
-	LineTo(hdc, x2, y2);
-	Ellipse(hdc, x1 + 10, y1 + 10, x1 - 10, y1 - 10);
-	Ellipse(hdc, x2 + 10, y2 + 10, x2 - 10, y2 - 10);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
+	x1 = xs1; y1 = ys1; x2 = xs2; y2 = ys2;
+
+	LineShape::Set(x1, y1, x2, y2);
+	LineShape::WayTrack(hdc);
+
+	EllipseShape::Set(x1 + 10, y1 + 10, x1 - 10, y1 - 10);
+	EllipseShape::WayTrack(hdc);
+
+	EllipseShape::Set(x2 + 10, y2 + 10, x2 - 10, y2 - 10);
+	EllipseShape::WayTrack(hdc);
+
+	LineShape::Set(x1, y1, x2, y2);
+
+
 }
 
 Shape* PointLineShape::Copy() {
@@ -152,21 +153,10 @@ void CubeShape::Show(HDC hdc) {
 	long x1, x2, y1, y2;
 	x1 = xs1; y1 = ys1; x2 = xs2; y2 = ys2;
 
-	HPEN hPen, hPenOld;
-	HBRUSH hBrush, hBrushOld;
-	hPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));					// Create pen
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	hBrush = CreateSolidBrush(RGB(192, 192, 192));
-	hBrushOld = (HBRUSH)SelectObject(hdc, hBrush);
-	SelectObject(hdc, hBrush);
-
-	Rectangle(hdc, x1 - 75, y1 - 75, x1 + 75, y1 + 75);		
-	Rectangle(hdc, x2 - 75, y2 - 75, x2 + 75, y2 + 75);		// Create rectangle
-
-	SelectObject(hdc, hBrushOld);
-	DeleteObject(hBrush);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
+	RectShape::Set(x1, y1, x1 + 75, y1 + 75);		
+	RectShape::Show(hdc);
+	RectShape::Set(x2, y2, x2 + 75, y2 + 75);		// Create rectangle
+	RectShape::Show(hdc);
 
 	if (x2 > x1 && y2 < y1)
 	{
@@ -213,26 +203,54 @@ void CubeShape::Show(HDC hdc) {
 
 void CubeShape::WayTrack(HDC hdc) {
 	long x1, x2, y1, y2;
-	x1 = xs1;
-	y1 = ys1;
-	x2 = xs2;
-	y2 = ys2;
-	HPEN hPen, hPenOld;
-	hPen = CreatePen(PS_DOT, 1, RGB(0, 0, 0));
-	hPenOld = (HPEN)SelectObject(hdc, hPen);
-	Rectangle(hdc, x1 - 75, y1 - 75, x1 + 75, y1 + 75);
-	Rectangle(hdc, x2 - 75, y2 - 75, x2 + 75, y2 + 75);
-	LineTo(hdc, x1, y1);
-	MoveToEx(hdc, x1 - 75, y1 - 75, NULL);
-	LineTo(hdc, x2 - 75, y2 - 75);
-	MoveToEx(hdc, x1 - 75, y1 + 75, NULL);
-	LineTo(hdc, x2 - 75, y2 + 75);
-	MoveToEx(hdc, x1 + 75, y1 + 75, NULL);
-	LineTo(hdc, x2 + 75, y2 + 75);
-	MoveToEx(hdc, x1 + 75, y1 - 75, NULL);
-	LineTo(hdc, x2 + 75, y2 - 75);
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
+	x1 = xs1; y1 = ys1; x2 = xs2; y2 = ys2;
+
+	RectShape::Set(x1, y1, x1 + 75, y1 + 75);
+	RectShape::WayTrack(hdc);
+	RectShape::Set(x2, y2, x2 + 75, y2 + 75);		// Create rectangle
+	RectShape::WayTrack(hdc);
+
+	if (x2 > x1 && y2 < y1)
+	{
+		LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
+		LineShape::WayTrack(hdc);
+	}
+
+	if (x2 > x1 && y2 > y1)
+	{
+		LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
+		LineShape::WayTrack(hdc);
+	}
+
+	if (x2 < x1 && y2 > y1)
+	{
+		LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 - 75, y1 - 75, x2 - 75, y2 - 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
+		LineShape::WayTrack(hdc);
+	}
+
+	if (x2 < x1 && y2 < y1)
+	{
+		LineShape::Set(x1 - 75, y1 + 75, x2 - 75, y2 + 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 + 75, y1 + 75, x2 + 75, y2 + 75);
+		LineShape::WayTrack(hdc);
+		LineShape::Set(x1 + 75, y1 - 75, x2 + 75, y2 - 75);
+		LineShape::WayTrack(hdc);
+	}
+
+	LineShape::Set(x1, y1, x2, y2);
 }
 
 Shape* CubeShape::Copy() {

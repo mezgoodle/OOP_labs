@@ -7,6 +7,8 @@ private:
 	static MyEditor* p_instance;
 	MyEditor() {};
 	MyEditor(const MyEditor&);
+	MyEditor& operator=(MyEditor&);
+	
 public:
 	static MyEditor* getInstance();
 	int x1, y1, x2, y2;

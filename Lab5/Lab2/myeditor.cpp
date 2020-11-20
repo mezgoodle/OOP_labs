@@ -3,7 +3,7 @@
 
 int c = 0;
 static bool isPressed = false;
-static const int MY_SHAPE_ARRAY_SIZE = 106;
+static const int MY_SHAPE_ARRAY_SIZE = 110;
 Shape** pcshape = new Shape * [MY_SHAPE_ARRAY_SIZE];
 
 MyEditor* MyEditor::p_instance = 0;

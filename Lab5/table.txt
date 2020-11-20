@@ -1,0 +1,29 @@
+Cube|436|158|280|256|
+Ellipse|132|202|396|425|
+Points with line|797|283|638|229|
+Points with line|598|422|598|423|
+Points with line|596|423|396|387|
+Points with line|396|387|396|387|
+Points with line|396|387|462|360|
+Points with line|534|336|543|335|
+Points with line|560|332|579|346|
+Points with line|633|350|635|355|
+Points with line|647|372|601|394|
+Points with line|568|399|559|401|
+Cube|199|133|387|243|
+Cube|185|132|426|262|
+Cube|645|232|511|283|
+Cube|867|203|687|339|
+
+
+Point|188|179|188|179|
+Point|262|161|262|161|
+Point|262|161|262|161|
+Point|259|188|260|192|
+Point|260|192|260|192|
+Point|260|192|260|192|
+Rectangle|212|202|361|289|
+Line|524|219|770|386|
+Line|717|147|573|248|
+
+

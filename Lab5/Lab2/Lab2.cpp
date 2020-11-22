@@ -262,7 +262,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK)
+        if (LOWORD(wParam) == IDCLEAR)
         {
             std::ofstream clear;
             clear.open(path, std::ofstream::out | std::ofstream::trunc);

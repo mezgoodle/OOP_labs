@@ -262,7 +262,14 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDCANCEL || LOWORD(wParam) == IDOK)
+        if (LOWORD(wParam) == IDOK)
+        {
+            std::ofstream clear;
+            clear.open(path, std::ofstream::out | std::ofstream::trunc);
+            clear.close();
+            SendDlgItemMessage(hWnd, IDC_LIST, LB_RESETCONTENT, 0, 0);
+        }
+        if (LOWORD(wParam) == IDCANCEL)
         {
             DestroyWindow(hWnd);
             return TRUE;

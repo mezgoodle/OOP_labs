@@ -1,59 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Shape" Collapsed="true">
-    <Position X="9" Y="1.25" Width="1.5" />
+  <Class Name="MyEditor">
+    <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAABAAAAAAAAAABAgAEAGAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
+      <HashCode>AACAAAAAACBAAAAAAAAARAAAAxCAAASAEQAgAAAAAEA=</HashCode>
+      <FileName>myeditor.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PointShape">
-    <Position X="6.75" Y="2.5" Width="1.5" />
+  <Class Name="MyTable">
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mytable.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LineShape">
-    <Position X="13.5" Y="2.5" Width="1.5" />
+  <Class Name="Toolbar">
+    <Position X="16.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RectShape">
-    <Position X="4.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EllipseShape">
-    <Position X="9" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PointLineShape">
-    <Position X="11.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CubeShape">
-    <Position X="9" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EmptyShape">
-    <Position X="11.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>shape.h</FileName>
+      <HashCode>AQgAAAAAAAEAAKAAAABAAAAAACAAAAAAAAAAhQAAAAA=</HashCode>
+      <FileName>toolbar.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

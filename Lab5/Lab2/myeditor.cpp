@@ -80,10 +80,10 @@ void MyEditor::OnPaint(HWND hWnd) {
 }
 
 std::string MyEditor::GetString() {
-	std::string str = pcshape[c]->GetName() + "|"
-		+ std::to_string(x1) + "|"
-		+ std::to_string(y1) + "|"
-		+ std::to_string(x2) + "|"
-		+ std::to_string(y2) + "|";
+	std::string str = "Figure: " + pcshape[c]->GetName() + "|"
+		+ "x1: " + std::to_string(x1) + "|"
+		+ "y1: " + std::to_string(y1) + "|"
+		+ "x2: " + std::to_string(x2) + "|"
+		+ "y2: " + std::to_string(y2) + "|";
 	return str;
 }

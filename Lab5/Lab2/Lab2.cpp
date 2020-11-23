@@ -241,24 +241,24 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
 BOOL CALLBACK DlgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    string path = "C://Users/Maxim/Desktop/Projects/OOP_labs/Lab5/table.txt";
-    ifstream file;
+    string path = "./table.txt";
+    ifstream f;
     switch (uMsg)
     {
     case WM_INITDIALOG:
-        file.open(path);
-        if (!file.is_open()) {
-            throw new exception("can't open file");
+        f.open(path);
+        if (!f.is_open()) {
+            throw new exception("Can't open the file");
         }
         else {
             string str;
-            while (!file.eof()) {
+            while (!f.eof()) {
                 str = "";
-                getline(file, str);
+                getline(f, str);
                 if (str != "") SendDlgItemMessage(hWnd, IDC_LIST, LB_ADDSTRING, 0, (LPARAM)str.c_str());
             }
         }
-        file.close();
+        f.close();
         return (INT_PTR)TRUE;
         break;
     case WM_COMMAND:

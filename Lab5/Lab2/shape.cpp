@@ -291,5 +291,5 @@ Shape* EmptyShape::Copy() {
 }
 
 std::string EmptyShape::GetName() {
-	return "";
+	return "Empty shape";
 }

@@ -1,0 +1,1 @@
+Figure: Empty shape|x1: 72|y1: 233|x2: 72|y2: 233|

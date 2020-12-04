@@ -26,6 +26,8 @@ There are main files, that used in every lab
 * [First lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab1)
 * [Second lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab2)
 * [Third lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab3)
+* [Fourth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab4)
+* [Fifth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab5)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

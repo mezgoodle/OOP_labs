@@ -29,5 +29,9 @@ There are main files, that used in every lab
 * [Fourth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab4)
 * [Fifth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab5)
 
+## Note
+
+Folders may have names that are not similar to lab names
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

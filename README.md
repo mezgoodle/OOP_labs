@@ -28,6 +28,7 @@ There are main files, that used in every lab
 * [Third lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab3)
 * [Fourth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab4)
 * [Fifth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab5)
+* [Sixth lab](https://github.com/mezgoodle/OOP_labs/tree/master/Lab6)
 
 ## Note
 
